@@ -1,3 +1,6 @@
+não altera o código abaixo sem a minha permissão por favor:
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -30,16 +33,20 @@
       margin: 0 auto;
     }
 
-    /* Header Moderno */
+    /* Header Moderno com Logos nos lados */
     .dashboard-header {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-      padding: 25px 30px;
+      padding: 20px 30px;
       border-radius: var(--border-radius);
       margin-bottom: 30px;
       box-shadow: var(--card-shadow);
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 140px;
     }
 
     .dashboard-header::before {
@@ -51,36 +58,73 @@
       height: 100%;
       background: rgba(255, 255, 255, 0.1);
       transform: skewX(-20deg);
+      z-index: 1;
     }
 
+    /* Logo Esquerda */
+    .logo-left {
+      position: relative;
+      z-index: 2;
+      flex: 0 0 auto;
+    }
+
+    /* Logo Direita */
+    .logo-right {
+      position: relative;
+      z-index: 2;
+      flex: 0 0 auto;
+    }
+
+    .logo-img {
+      height: 90px;
+      width: auto;
+      object-fit: contain;
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Informações da Organização (Centro) */
     .org-info {
       position: relative;
       z-index: 2;
+      text-align: center;
+      flex: 1;
+      padding: 0 30px;
     }
 
     .org-title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       margin-bottom: 8px;
       letter-spacing: 0.5px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     }
 
     .org-department {
       font-size: 20px;
       font-weight: 500;
-      opacity: 0.9;
-      margin-bottom: 5px;
+      opacity: 0.95;
+      margin-bottom: 8px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     .report-title {
       font-size: 18px;
       background: rgba(255, 255, 255, 0.15);
-      padding: 10px 20px;
-      border-radius: 8px;
+      padding: 10px 25px;
+      border-radius: 10px;
       display: inline-block;
-      margin-top: 15px;
-      font-weight: 500;
+      margin-top: 12px;
+      font-weight: 600;
       backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     /* Layout em Grid */
@@ -91,9 +135,85 @@
       margin-bottom: 30px;
     }
 
+    @media (max-width: 1200px) {
+      .dashboard-header {
+        padding: 15px 20px;
+        min-height: 120px;
+      }
+      
+      .logo-img {
+        height: 75px;
+      }
+      
+      .org-title {
+        font-size: 22px;
+      }
+      
+      .org-department {
+        font-size: 18px;
+      }
+      
+      .report-title {
+        font-size: 16px;
+        padding: 8px 20px;
+      }
+    }
+
     @media (max-width: 992px) {
       .dashboard-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        min-height: auto;
+        padding: 20px;
+      }
+      
+      .logo-left, .logo-right {
+        position: static;
+      }
+      
+      .logo-img {
+        height: 65px;
+      }
+      
+      .org-info {
+        padding: 0 15px;
+        order: 2;
+      }
+      
+      .org-title {
+        font-size: 20px;
+      }
+      
+      .org-department {
+        font-size: 16px;
+      }
+      
+      .report-title {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-header {
+        padding: 15px;
+      }
+      
+      .org-title {
+        font-size: 18px;
+      }
+      
+      .org-department {
+        font-size: 15px;
+      }
+      
+      .logo-img {
+        height: 55px;
+        padding: 6px;
       }
     }
 
@@ -462,18 +582,6 @@
 
     /* Responsividade */
     @media (max-width: 768px) {
-      .dashboard-header {
-        padding: 20px;
-      }
-      
-      .org-title {
-        font-size: 22px;
-      }
-      
-      .org-department {
-        font-size: 16px;
-      }
-      
       .btn-custom {
         min-width: 140px;
         padding: 12px 20px;
@@ -538,12 +646,23 @@
 
 <body>
   <div class="dashboard-container">
-    <!-- Header Moderno -->
+    <!-- Header Moderno com Logos nos Lados -->
     <div class="dashboard-header">
+      <!-- Logo Esquerda -->
+      <div class="logo-left">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/b/ba/Logo_IAT_PR.png" alt="Logo ERCBA" class="logo-img" id="logoLeft">
+      </div>
+      
+      <!-- Informações da Organização (Centro) -->
       <div class="org-info">
         <h1 class="org-title">ESCRITÓRIO REGIONAL DE CURITIBA</h1>
         <h2 class="org-department">SETOR DE LICENCIAMENTO DE ENERGIA</h2>
         <div class="report-title">RELATÓRIO DE VISTORIA TÉCNICA</div>
+      </div>
+      
+      <!-- Logo Direita -->
+      <div class="logo-right">
+        <img src="https://i.postimg.cc/8CbcrCB9/dynamiccontent-properties.png" alt="Logo IAT" class="logo-img" id="logoRight">
       </div>
     </div>
 
@@ -735,7 +854,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // ============================================
-    // CONFIGURAÇÕES FIXAS DO PDF (MANTIDAS IGUAIS)
+    // CONFIGURAÇÕES FIXAS DO PDF
     // ============================================
     const PDF_CONFIG = {
       relatorioText: {
@@ -765,11 +884,11 @@
     const LOGOS = {
       headerLeft: "https://upload.wikimedia.org/wikipedia/pt/b/ba/Logo_IAT_PR.png",
       headerRight: "https://i.postimg.cc/8CbcrCB9/dynamiccontent-properties.png",
-      footerLogo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABHgAAAAmCAYAAAC/OSzXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKMSURBVHhe7djBi81RGMfhW5aztp6FnaWttQ027OxGNlI2srBCsWBlymbIcpiIlDKlpm4mUYaxMqNmJJdpUtNMtxBx/XR1aHAW5tx+l9d9nvr8C+e8fRsVAAAAAKEZeAAAAACCM/AAAAAABGfgAQAAAAjOwAMAAAAQnIEHAAAAIDgDDwAAAEBwBh4AAACA4Aw8AAAAAMEZeAAAAACCM/AAAAAABGfgAQAAAAjut4Fn/s07SZIkSQX1an7tlSRJP9qInwaepfaHqnFkSpIkSdIGuz23kq7qMktvV6qhS3urxthOSZKqXZMn0g/xZww8kiRJUo+NTDxNF3W5/c1z2QNfkjSYGXgkSZKkPjZ0rPntju7FZGsme9xLkgY3A48kSZLUx0anW+maLrft+uHscS9JGtwMPJIkSVKf2n5+Jl3S5c48uZY97CVJg52BR5IkSepTzcXVdEmXed5erjZd2J097CVJg52BR5IkSepDj268S1d0uX1TZ7NHvSRJBh5JkiSp5jYfn67W3n9KV3SZmy/uZw96SZK6GXgkSZKkmrv44HW6oMttvXowe9BLktTNwCNJkiTV2I6x2XQ9lzv56HL2mJck6XsGHkmSJKnGHr5sp+u5zNxqK3vIS5K0PgOPJEmSVFNHby2ky7ncnjuns4e8JEnrM/BIkiRJNTR86l718XMnXc5lJhbuZo94SZJ+7Z8aeLqfoCRJkvS3yt2opY0/Xk5Xc5nOl0615cqB7BGfa3h8RJL0H5Z783P1NPAAAAAAEI+BBwAAACA4Aw8AAABAcAYeAAAAgOAMPAAAAADBGXgAAAAAgjPwAAAAAARn4AEAAAAIzsADAAAAEJyBBwAAACA4Aw8AAABAaFX1FQZy/v1IobicAAAAAElFTkSuQmCC"
+      footerLogo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABHgAAAAmCAYAAAC/OSzXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKMSURBVHhe7djBi81RGMfhW5aztp6FnaWttQ027OxGNlI2srBCsWBlymbIcpiIlDKlpm4mUYaxMqNmJJdpUtNMtxBx/XR1aHAW5tx+l9d9nvr8C+e8fRsVAAAAAKEZeAAAAACCM/AAAAAABGfgAQAAAAjOwAMAAAAQnIEHAAAAIDgDDwAAAEBwBh4AAACA4Aw8AAAAAMEZeAAAAACCM/AAAAAABGfgAQAAAAjut4Fn/s07SZIkSQX1an7tlSRJP9qInwaepfaHqnFkSpIkSdIGuz23kq7qMktvV6qhS3urxthOSZKqXZMn0g/xZww8kiRJUo+NTDxNF3W5/c1z2QNfkjSYGXgkSZKkPjZ0rPntju7FZGsme9xLkgY3A48kSZLUx0anW+maLrft+uHscS9JGtwMPJIkSVKf2n5+Jl3S5c48uZY97CVJg52BR5IkSepTzcXVdEmXed5erjZd2J097CVJg52BR5IkSepDh248S1d0uX1TZ7NHvSRJBh5JkiSp5jYfn67W3n9KV3SZmy/uZw96SZK6GXgkSZKkmrv44HW6oMttvXowe9BLktTNwCNJkiTV2I6x2XQ9lzv56HL2mJck6XsGHkmSJKnGHr5sp+u5zNxqK3vIS5K0PgOPJEmSVFNHby2ky7ncnjuns4e8JEnrM/BIkiRJNTR86l718XMnXc5lJhbuZo94SZJ+7Z8aeLqfoCRJkvS3yt2opY0/Xk5Xc5nOl0615cqB7BGfa3h8RJL0H5Z783P1NPAAAAAAEI+BBwAAACA4Aw8AAABAcAYeAAAAgOAMPAAAAADBGXgAAAAAgjPwAAAAAARn4AEAAAAIzsADAAAAEJyBBwAAACA4Aw8AAABAaFX1FQZy/v1IobicAAAAAElFTkSuQmCC"
     };
     
     // ============================================
-    // DADOS DO FORMULÁRIO (MANTIDOS IGUAIS)
+    // DADOS DO FORMULÁRIO
     // ============================================
     const condicionantes = [
       "O esgoto sanitário deverá ser encaminhado para a fossa séptica e semidouro ou para rede coletora pública.",
@@ -804,7 +923,7 @@
     ];
     
     // ============================================
-    // INICIALIZAÇÃO (ATUALIZADA)
+    // INICIALIZAÇÃO
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
       const hoje = new Date().toISOString().split('T')[0];
@@ -943,7 +1062,7 @@
     }
     
     // ============================================
-    // FUNÇÕES PRINCIPAIS DO FORMULÁRIO (MANTIDAS IGUAIS)
+    // FUNÇÕES PRINCIPAIS DO FORMULÁRIO
     // ============================================
     function salvarFormulario() {
       const dados = {
@@ -1029,8 +1148,356 @@
       }
     }
     
-    // A função gerarPDF() permanece EXATAMENTE IGUAL à original
-    // Não inclui aqui para não duplicar, mas funciona perfeitamente
+    // ============================================
+    // FUNÇÃO GERAR PDF
+    // ============================================
+    function gerarPDF() {
+      try {
+        mostrarStatus('Gerando PDF...', 'info');
+        
+        if (typeof window.jspdf === 'undefined') {
+          mostrarStatus('Erro: Biblioteca jsPDF não carregada', 'error');
+          return;
+        }
+        
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pageWidth = 210;
+        const marginLeft = 20;
+        const marginRight = 20;
+        let yPos = 20;
+        
+        // Função para adicionar cabeçalho com logos
+        const adicionarCabecalho = () => {
+          try {
+            // Logo esquerda (ERCBA)
+            if (LOGOS.headerLeft) {
+              pdf.addImage(LOGOS.headerLeft, 'PNG', marginLeft, 10, 30, 23);
+            } else {
+              pdf.setFillColor(...PDF_CONFIG.colors.primary);
+              pdf.rect(marginLeft, 10, 20, 20, 'F');
+              pdf.setTextColor(255, 255, 255);
+              pdf.setFontSize(8);
+              pdf.text("ERCBA", marginLeft + 10, 22, { align: 'center' });
+            }
+            
+            // Logo direita (IAT)
+            if (LOGOS.headerRight) {
+              pdf.addImage(LOGOS.headerRight, 'PNG', pageWidth - marginRight - 20, 10, 25, 20);
+            } else {
+              pdf.setFillColor(...PDF_CONFIG.colors.secondary);
+              pdf.rect(pageWidth - marginRight - 20, 10, 20, 20, 'F');
+              pdf.setTextColor(255, 255, 255);
+              pdf.setFontSize(8);
+              pdf.text("IAT", pageWidth - marginRight - 10, 22, { align: 'center' });
+            }
+          } catch (e) {
+            console.log('Erro ao carregar logos, usando fallback:', e);
+            pdf.setFillColor(...PDF_CONFIG.colors.primary);
+            pdf.rect(marginLeft, 10, 20, 20, 'F');
+            pdf.setTextColor(255, 255, 255);
+            pdf.setFontSize(8);
+            pdf.text("ERCBA", marginLeft + 10, 22, { align: 'center' });
+            
+            pdf.setFillColor(...PDF_CONFIG.colors.secondary);
+            pdf.rect(pageWidth - marginRight - 20, 10, 20, 20, 'F');
+            pdf.text("IAT", pageWidth - marginRight - 10, 22, { align: 'center' });
+          }
+          
+          pdf.setLineWidth(0.5);
+          pdf.line(marginLeft, 35, pageWidth - marginRight, 35);
+        };
+        
+        // Função para adicionar rodapé
+        const adicionarRodape = (paginaAtual, totalPaginas) => {
+          const hoje = new Date().toLocaleDateString('pt-BR');
+          
+          // Linha decorativa
+          if (LOGOS.footerLogo) {
+            try {
+              const lineWidth = pageWidth - marginLeft - marginRight;
+              const lineHeight = 2;
+              const lineY = 270;
+              pdf.addImage(LOGOS.footerLogo, 'PNG', marginLeft, lineY, lineWidth, lineHeight);
+            } catch (e) {
+              pdf.setLineWidth(0.5);
+              pdf.setDrawColor(...PDF_CONFIG.colors.primary);
+              pdf.line(marginLeft, 271, pageWidth - marginRight, 271);
+            }
+          } else {
+            pdf.setLineWidth(0.5);
+            pdf.setDrawColor(...PDF_CONFIG.colors.primary);
+            pdf.line(marginLeft, 271, pageWidth - marginRight, 271);
+          }
+          
+          // Texto do rodapé
+          pdf.setFontSize(7);
+          pdf.setFont("helvetica", "normal");
+          pdf.setTextColor(...PDF_CONFIG.colors.darkGray);
+          
+          pdf.text(PDF_CONFIG.footerText.linha1, marginLeft, 278);
+          pdf.text(PDF_CONFIG.footerText.linha2, marginLeft, 282);
+          pdf.text(PDF_CONFIG.footerText.linha3, marginLeft, 286);
+          pdf.text(`Gerado em: ${hoje}`, pageWidth / 2, 286, { align: 'center' });
+          pdf.text(`Página ${paginaAtual} de ${totalPaginas}`, pageWidth - marginRight, 286, { align: 'right' });
+        };
+        
+        // Função para verificar nova página
+        const verificarNovaPagina = (alturaNecessaria) => {
+          if (yPos + alturaNecessaria > 250) {
+            const paginaAtual = pdf.internal.getNumberOfPages();
+            adicionarRodape(paginaAtual, paginaAtual + 1);
+            pdf.addPage();
+            adicionarCabecalho();
+            yPos = 40;
+            return true;
+          }
+          return false;
+        };
+        
+        // Função para adicionar cabeçalho da tabela de condicionantes
+        const adicionarCabecalhoCondicionantes = (linhaY) => {
+          pdf.setFillColor(...PDF_CONFIG.colors.primary);
+          pdf.rect(marginLeft, linhaY, pageWidth - marginLeft - marginRight, 8, 'F');
+          pdf.setTextColor(255, 255, 255);
+          pdf.setFont("helvetica", "bold");
+          pdf.setFontSize(9);
+          pdf.text('CONDICIONANTES', marginLeft + 5, linhaY + 5);
+          pdf.text('ATENDE', pageWidth - marginRight - 15, linhaY + 5);
+          return linhaY + 8;
+        };
+        
+        // Função para adicionar cabeçalho da tabela de checklist
+        const adicionarCabecalhoChecklist = (linhaY) => {
+          pdf.setFillColor(...PDF_CONFIG.colors.secondary);
+          pdf.rect(marginLeft, linhaY, pageWidth - marginLeft - marginRight, 8, 'F');
+          pdf.setTextColor(255, 255, 255);
+          pdf.setFont("helvetica", "bold");
+          pdf.setFontSize(9);
+          pdf.text('CHECK-LIST IN-LOCO', marginLeft + 5, linhaY + 5);
+          pdf.text('ATENDE', pageWidth - marginRight - 15, linhaY + 5);
+          return linhaY + 8;
+        };
+        
+        // Começar a primeira página
+        adicionarCabecalho();
+        yPos = 40;
+        
+        // Título do relatório
+        pdf.setFontSize(16);
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        pdf.text(PDF_CONFIG.relatorioText.linha1, pageWidth / 2, yPos, { align: 'center' });
+        yPos += 8;
+        pdf.setFontSize(14);
+        pdf.text(PDF_CONFIG.relatorioText.linha2, pageWidth / 2, yPos, { align: 'center' });
+        yPos += 8;
+        pdf.setFontSize(12);
+        pdf.setTextColor(0, 0, 0);
+        pdf.text(PDF_CONFIG.relatorioText.linha3, pageWidth / 2, yPos, { align: 'center' });
+        yPos += 12;
+        
+        // Informações básicas
+        pdf.setFontSize(11);
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        const empreendimento = document.getElementById('empreendimento').value || 'Não informado';
+        const protocolo = document.getElementById('protocolo').value || 'Não informado';
+        const dataVistoria = document.getElementById('dataVistoria').value || 'Não informada';
+        
+        pdf.text('EMPREENDIMENTO:', marginLeft, yPos);
+        pdf.setFont("helvetica", "normal");
+        pdf.setTextColor(0, 0, 0);
+        pdf.text(empreendimento, marginLeft + 45, yPos);
+        yPos += 7;
+        
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        pdf.text('PROTOCOLO:', marginLeft, yPos);
+        pdf.setFont("helvetica", "normal");
+        pdf.setTextColor(0, 0, 0);
+        pdf.text(protocolo, marginLeft + 45, yPos);
+        yPos += 7;
+        
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        pdf.text('DATA:', marginLeft, yPos);
+        pdf.setFont("helvetica", "normal");
+        pdf.setTextColor(0, 0, 0);
+        pdf.text(dataVistoria, marginLeft + 45, yPos);
+        yPos += 15;
+        
+        // Seção 1: Condicionantes
+        verificarNovaPagina(30);
+        pdf.setFontSize(12);
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        pdf.text('1. ATENDIMENTO ÀS CONDICIONANTES:', marginLeft, yPos);
+        yPos += 10;
+        
+        // Tabela de condicionantes
+        let linhaY = yPos;
+        linhaY = adicionarCabecalhoCondicionantes(linhaY);
+        
+        // Dados das condicionantes
+        pdf.setFontSize(9);
+        for (let i = 0; i < condicionantes.length; i++) {
+          const condCustom = document.getElementById(`cond_custom_${i}`);
+          let textoCond = '';
+          if (condCustom && condCustom.value) {
+            textoCond = condCustom.value;
+          } else if (condicionantes[i]) {
+            textoCond = condicionantes[i];
+          }
+          if (!textoCond.trim()) continue;
+          
+          if (linhaY > 250) {
+            const paginaAtual = pdf.internal.getNumberOfPages();
+            adicionarRodape(paginaAtual, paginaAtual + 1);
+            pdf.addPage();
+            adicionarCabecalho();
+            linhaY = 40;
+            linhaY = adicionarCabecalhoCondicionantes(linhaY);
+            pdf.setFontSize(9);
+          }
+          
+          const radioValue = document.querySelector(`input[name="cond_${i}"]:checked`)?.value;
+          const atendeText = radioValue ? radioValue.toUpperCase() : 'NÃO';
+          
+          if (i % 2 === 0) {
+            pdf.setFillColor(...PDF_CONFIG.colors.lightGray);
+            pdf.rect(marginLeft, linhaY, pageWidth - marginLeft - marginRight, 8, 'F');
+          }
+          
+          pdf.setTextColor(0, 0, 0);
+          pdf.setFont("helvetica", "normal");
+          const lines = pdf.splitTextToSize(textoCond, 120);
+          for (let j = 0; j < lines.length; j++) {
+            pdf.text(lines[j], marginLeft + 5, linhaY + (j * 4) + 4);
+          }
+          
+          pdf.setFont("helvetica", "bold");
+          pdf.text(atendeText, pageWidth - marginRight - 15, linhaY + 4);
+          linhaY += Math.max(8, lines.length * 4);
+        }
+        
+        yPos = linhaY + 10;
+        
+        // Seção 2: Checklist
+        verificarNovaPagina(30);
+        pdf.setFontSize(12);
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        pdf.text('2. RELATÓRIO DE CONFORMIDADE:', marginLeft, yPos);
+        yPos += 10;
+        
+        // Tabela de checklist
+        linhaY = yPos;
+        linhaY = adicionarCabecalhoChecklist(linhaY);
+        
+        // Dados do checklist
+        pdf.setFontSize(9);
+        for (let i = 0; i < checklistItems.length; i++) {
+          if (linhaY > 250) {
+            const paginaAtual = pdf.internal.getNumberOfPages();
+            adicionarRodape(paginaAtual, paginaAtual + 1);
+            pdf.addPage();
+            adicionarCabecalho();
+            linhaY = 40;
+            linhaY = adicionarCabecalhoChecklist(linhaY);
+            pdf.setFontSize(9);
+          }
+          
+          const item = checklistItems[i];
+          const radioValue = document.querySelector(`input[name="check_${i}"]:checked`)?.value;
+          const atendeText = radioValue ? radioValue.toUpperCase() : 'NÃO AVALIADO';
+          
+          if (i % 2 === 0) {
+            pdf.setFillColor(...PDF_CONFIG.colors.lightGray);
+            pdf.rect(marginLeft, linhaY, pageWidth - marginLeft - marginRight, 8, 'F');
+          }
+          
+          pdf.setTextColor(0, 0, 0);
+          pdf.setFont("helvetica", "normal");
+          const lines = pdf.splitTextToSize(item, 120);
+          for (let j = 0; j < lines.length; j++) {
+            pdf.text(lines[j], marginLeft + 5, linhaY + (j * 4) + 4);
+          }
+          
+          pdf.setFont("helvetica", "bold");
+          pdf.text(atendeText, pageWidth - marginRight - 15, linhaY + 4);
+          linhaY += Math.max(8, lines.length * 4);
+        }
+        
+        yPos = linhaY + 15;
+        
+        // Observações
+        const observacoes = document.getElementById('observacoes').value;
+        if (observacoes && observacoes.trim()) {
+          verificarNovaPagina(20);
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.text('OBSERVAÇÕES ADICIONAIS:', marginLeft, yPos);
+          yPos += 8;
+          pdf.setFontSize(10);
+          pdf.setFont("helvetica", "normal");
+          pdf.setTextColor(0, 0, 0);
+          const obsLines = pdf.splitTextToSize(observacoes, pageWidth - 2 * marginLeft);
+          for (let i = 0; i < obsLines.length; i++) {
+            if (yPos > 250) {
+              const paginaAtual = pdf.internal.getNumberOfPages();
+              adicionarRodape(paginaAtual, paginaAtual + 1);
+              pdf.addPage();
+              adicionarCabecalho();
+              yPos = 40;
+            }
+            pdf.text(obsLines[i], marginLeft, yPos);
+            yPos += 5;
+          }
+        }
+        
+        // Assinatura
+        verificarNovaPagina(40);
+        yPos += 10;
+        pdf.setFontSize(11);
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        const vistoriador = document.getElementById('vistoriador').value || '________________';
+        const cargo = document.getElementById('cargo').value || 'Engenheiro/Responsável Técnico';
+        
+        pdf.text('VISTORIADOR: ' + vistoriador, marginLeft, yPos);
+        yPos += 7;
+        pdf.text('CARGO: ' + cargo, marginLeft, yPos);
+        yPos += 15;
+        
+        // Linha de assinatura
+        pdf.setLineWidth(0.5);
+        pdf.line(marginLeft, yPos, marginLeft + 60, yPos);
+        pdf.setFontSize(8);
+        pdf.setTextColor(100, 100, 100);
+        pdf.text('Assinatura', marginLeft + 20, yPos + 5);
+        
+        // Adicionar rodapé em todas as páginas
+        const totalPaginas = pdf.internal.getNumberOfPages();
+        for (let i = 1; i <= totalPaginas; i++) {
+          pdf.setPage(i);
+          adicionarRodape(i, totalPaginas);
+        }
+        
+        // Salvar o PDF
+        const nomeArquivo = protocolo ?
+          `Relatorio_Vistoria_${protocolo.replace(/\s+/g, '_')}.pdf` :
+          `Relatorio_Vistoria_${new Date().getTime()}.pdf`;
+        
+        pdf.save(nomeArquivo);
+        mostrarStatus('PDF gerado com sucesso!');
+        
+      } catch (error) {
+        console.error('Erro detalhado ao gerar PDF:', error);
+        mostrarStatus(`Erro ao gerar PDF: ${error.message}`, 'error');
+      }
+    }
     
     function limparFormulario() {
       if (confirm('Tem certeza que deseja limpar todo o formulário? Todos os dados serão perdidos.')) {
@@ -1090,13 +1557,6 @@
         salvarFormulario();
       }
     });
-    
-    // ============================================
-    // FUNÇÃO gerarPDF() - MANTIDA EXATAMENTE IGUAL À ORIGINAL
-    // ============================================
-    // A função gerarPDF() permanece EXATAMENTE como estava no código original
-    // Para não duplicar o código enorme aqui, mantenha a função original
-    // Ela continuará funcionando perfeitamente com o novo layout
   </script>
 </body>
 </html>
